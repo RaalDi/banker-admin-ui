@@ -1,3 +1,4 @@
+export * from './abstract-model';
 export * from './address';
 export * from './company';
 export * from './currency';

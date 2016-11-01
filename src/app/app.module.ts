@@ -2,31 +2,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { provideAuth, AuthConfigConsts } from 'angular2-jwt';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { AppComponent } from './app.component';
 import { BankerUiRoutingModule } from './app-routing.module';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { BankerComponent } from './components/banker/banker.component';
-import { CompanyInfoComponent } from './components/company/company-info.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SignInComponent } from './authenticate/sign-in.component';
+import { Authenticate } from './authenticate/authenticate.service';
+import { BankerComponent } from './banker/banker.component';
+import { CompanyInfoComponent } from './company/company-info.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+let cookieService = new CookieService();
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     SignInComponent,
     BankerComponent,
-    CompanyInfoComponent, 
+    CompanyInfoComponent,
     PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule, 
-    BankerUiRoutingModule, 
+    HttpModule,
+    BankerUiRoutingModule,
     JsonpModule
   ],
-  providers: [],
+  providers: [Authenticate, provideAuth({
+    tokenGetter: (() => cookieService.get(AuthConfigConsts.DEFAULT_TOKEN_NAME))
+  }), CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

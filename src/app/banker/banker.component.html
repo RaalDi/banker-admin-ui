@@ -1,0 +1,4 @@
+<h2>{{ title }}</h2>
+<h2>I am logged in</h2>
+<a href="#" (click)="onSignOut()">Sign Out</a>
+<button id="signOut" *ngIf="auth.canActivate()" (click)="onSignOut()">Sign Out</button>

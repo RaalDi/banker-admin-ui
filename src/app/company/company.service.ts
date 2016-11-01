@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
 import { Observable } from 'rxjs/Observable';
-import { Company } from "../../model";
+import { Company } from "../model";
 
 @Injectable()
 export class CompanyService {
-  private companyUrl: string = "http://localhost:8000/companies";
+  private companyUrl: string = "http://localhost:8080/companies";
 
-  constructor(private http: Http) { }
+  constructor(private authHttp: AuthHttp) { }
 
   getCompanies(): Observable<Company[]> {
-    return this.http.get(this.companyUrl).map(this.extractData)
+    return this.authHttp.get(this.companyUrl).map(this.extractData)
       .catch(this.handleError);
   }
 

@@ -1,15 +1,17 @@
-import { Company, Address, RolePermission, Shop } from "./";
+import { AbstractModel } from "./";
 
-export class User {
+export class User extends AbstractModel {
   id: number;
   firstName: String;
   lastName: String;
+  username: String;
   phoneNumber: String;
   password: String;
-  loggedInDate: String;
+  signedInDate: String;
   active: boolean;
-  company: Company;
-  address: Address;
-  rolePermission: RolePermission[] = [];
-  shop: Shop;
+  signedIn: boolean;
+  companyId: number;
+  addressId: number;
+  role: String;
+  shopId: number;
 }

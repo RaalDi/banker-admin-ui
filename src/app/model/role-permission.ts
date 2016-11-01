@@ -1,4 +1,4 @@
-import { User, Role, Permission } from "./";
+import { User, Role, Permission, AbstractModel } from "./";
 
 export class RolePermission {
   id: number;

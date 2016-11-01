@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Authenticate } from './authenticate/authenticate.service';
 import './rxjs-operators';
 
 @Component({
@@ -7,5 +8,11 @@ import './rxjs-operators';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'RaalDi Banker';
+  title = 'Banker';
+
+  constructor(private auth: Authenticate){}
+
+  signOut(){
+    this.auth.signOut();
+  }
 }

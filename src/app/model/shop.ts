@@ -1,4 +1,4 @@
-import { Address, Company, User } from "./";
+import { Address, Company, User, AbstractModel } from "./";
 
 export class Shop {
   id: number;
