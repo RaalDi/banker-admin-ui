@@ -13,13 +13,12 @@ export class Authenticate implements CanActivate {
   private tokenHeader: string = 'X-Security-Token';
   private signedUser: User;
   private jwtHelper: JwtHelper = new JwtHelper();
-
+  
   constructor(private http: Http, private authHttp: AuthHttp, private cookieService: CookieService) {
     this.setSignedUser();
   }
 
-  signIn(username: String, password: String) {
-
+  signIn(username: String, password: String, captcha: String) {
     return this.http.post(this.serverUrl + '/auth/sign-in', JSON.stringify({
       username: username,
       password: password

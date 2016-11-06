@@ -3,18 +3,28 @@
   <div class="form-group">
     <label class="control-label col-sm-2" for="username">Usuario:</label>
     <div class="col-sm-10">
-      <input type="username" class="form-control" id="username" placeholder="Escriba su Usuario" [(ngModel)]="request.username" name="username" #username="ngModel">
+      <input type="username" class="form-control" id="username" placeholder="Escriba su Usuario" [(ngModel)]="request.username"
+        name="username" #username="ngModel">
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="password">Contrasena:</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="password" placeholder="Escriba su Contrasena" [(ngModel)]="request.password" name="password" #password="ngModel">
+      <input type="password" class="form-control" id="password" placeholder="Escriba su Contrasena" [(ngModel)]="request.password"
+        name="password" #password="ngModel">
     </div>
   </div>
+  <!-- Captcha
+  <div class="form-group">
+    <div class="g-recaptcha col-sm-offset-2 col-sm-10" data-callback="verifyCaptcha" data-sitekey="6LdlOQsUAAAAAC-_Y0sVld9KUjMky67QtTQeo9oK"></div>
+  </div>
+  -->
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Enviar</button>
+      <button type="submit" [disabled]="!signInForm.valid" class="btn btn-default">Enviar</button>
+      <!-- Captcha
+      <button type="submit" id="btn1" [disabled]="!isCaptcha" class="btn btn-default">Enviar</button>
+      -->
     </div>
   </div>
   <div *ngIf="error" class="alert alert-danger">
