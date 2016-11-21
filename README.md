@@ -1,2 +1,2 @@
-# banker-ui
-RaalDi Banker UI
+# banker-admin-ui
+RaalDi Banker Administrator UI
