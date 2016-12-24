@@ -32,14 +32,16 @@ export class SignInComponent {
     this.isCaptcha = false;
     this.auth.signIn(this.request.username, this.request.password, this.captcha)
       .subscribe(
-      (res: any) => this.routeToBanker(),
+      (res: any) => { 
+        this.routeToBanker(); 
+      },
       (err: any) => {
         this.error = true;
         console.log('Error: ' + err);
         this.message = err;
       },
       () => console.log('Authentication Completed for username: ' + this.request.username)
-      );
+      );   
   }
 
   private routeToBanker() {

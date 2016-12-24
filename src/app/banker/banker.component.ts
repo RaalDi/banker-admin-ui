@@ -13,7 +13,9 @@ export class BankerComponent {
   constructor(private auth: Authenticate, private router: Router) { }
 
   ngOnInit() {
-    if (!this.auth.canActivate()) {
+    if (this.auth.canActivate()) {
+      this.title = 'Welcome ' + this.auth.getSignedUsername();
+    } else {
       this.router.navigate(['/sign-in']);
     }
   }
